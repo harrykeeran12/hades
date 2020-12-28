@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="text:home" content="Welcome to my blog!">
+    <meta name="text:about" content="I'm a hades fan!">
+    <meta name="text:link1" content="">
+    <meta name="text:link2" content="">
+    <meta name="text:link3" content="">
+    <meta name="text:link for link1" content="">
+    <meta name="text:link for link2" content="">
+    <meta name="text:link for link3" content="">
+    <title>hadestheme</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans+JP:wght@900&family=Syne&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      :root {
+        --title: "Kanit", sans-serif;
+
+        --description: "Noto Sans JP", sans-serif;
+
+        --numbers: "Syne", sans-serif;
+        
+        --acc: pink;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+      .bg {
+        width: 100vw;
+        min-height: 300vh;
+        max-height: 600vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -5;
+        display: flex;
+        flex-direction: column;
+      }
+      .bg img {
+        width: 100vw;
+        height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .title {
+        font-family: var(--title);
+      }
+      .numbers {
+        font-family: var(--numbers);
+        color: white;
+      }
+      .description {
+        font-family: var(--description);
+      }
+      .spin {
+        transform: rotate(45deg);
+        overflow: hidden;
+        width: 50px;
+        height: 50px;
+      }
+
+      .nav {
+        position: fixed;
+        width: 100vw;
+        height: 50px;
+        color: white;
+        font-family: var(--title);
+        top: 0;
+        left: 0;
+        background-color: black;
+        z-index: 5;
+      }
+      .nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .nav a {
+        text-decoration: none;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+      }
+      .nav a:hover {
+        color: #fffd65;
+      }
+      .nav a:hover::before {
+        content: url("https://cdn.discordapp.com/attachments/791691369017376819/791691478384377876/pointer.png");
+        display: inline-block;
+        transform: scale(0.5);
+        position: absolute;
+        top: -10px;
+        left: -40px;
+        animation: fadein 500ms ease-in-out;
+        /* margin-right: 5px; */
+      }
+      .nav li {
+        margin-left: 50px;
+        margin-top: 10px;
+      }
+      .dropdown {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        font-family: var(--description);
+      }
+      select option {
+        background-repeat: no-repeat;
+        background-position: top left;
+      }
+      .bond {
+        position: relative;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .boons-wrapper {
+        z-index: 1;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        pointer-events: none;
+      }
+      .boons::before {
+        content: "";
+        width: 40px;
+        height: 20px;
+        background-color: black;
+        position: relative;
+        top: -10%;
+        left: 0%;
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        z-index: 0;
+      }
+      .boons::after {
+        content: "";
+        width: 40px;
+        height: 20px;
+        background-color: black;
+        position: relative;
+        bottom: -10%;
+        left: 0%;
+        transform: rotate(-180deg);
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        z-index: 0;
+      }
+
+      .boons {
+        position: fixed;
+        background-color: black;
+        width: 4%;
+        height: 55%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-left: 50px;
+        overflow: visible;
+        z-index: 1;
+      }
+      .boons li img {
+        width: 50px;
+        height: 50px;
+        transform: rotate(-45deg);
+        pointer-events: all;
+      }
+      .stats {
+        width: 100vw;
+        height: 5vh;
+        display: flex;
+        position: fixed;
+        bottom: 10px;
+        z-index: 9;
+      }
+      .stats li {
+        display: flex;
+        flex-direction: row;
+      }
+      .health {
+        width: 200px;
+        height: 20px;
+        bottom: 0;
+        background-color: black;
+        margin-left: 60px;
+        margin-right: 10px;
+        margin-bottom: 30px;
+        box-shadow: 0px 0px 1px 3px rgba(0, 0, 0, 0.25),
+          inset 0px 0px 5px #c4c4c4;
+        display: flex;
+        align-items: center;
+      }
+      .innerhealth {
+        display: inline-block;
+        width: 180px;
+        height: 10px;
+        background: #be3232;
+        box-shadow: 3px 0px 2px #ff0909;
+        position: relative;
+        top: 0;
+        left: 5px;
+        z-index: 2;
+        transition: width 1s ease-in-out;
+      }
+
+      .infowrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      .infowrapper .toptext {
+        background-color: #3c3930;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        top: 10%;
+        position: relative;
+        z-index: 3;
+        padding: 10px;
+        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 80%);
+        box-shadow: -3px 46px 38px -9px rgba(0, 0, 0, 0.63);
+      }
+
+      .infowrapper .heading {
+        letter-spacing: 1px;
+      }
+      .infowrapper .flavortext {
+        font-size: 50%;
+        color: #b14d2c;
+        font-family: var(--description);
+      }
+
+      .infowrapper .description-wrapper {
+        background-color: #fff;
+        width: 500px;
+        min-height: 200px;
+        font-size: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+      }
+
+      .infowrapper .description {
+        padding: 50px;
+      }
+      .infowrapper a{
+          color: var(--acc);
+          text-decoration: none;
+          pointer-events: all;
+          
+      }
+      .postwrapper {
+        display: flex;
+        align-items: center;
+        /*justify-content: center;*/
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        pointer-events: none;
+        z-index: 2;
+        flex-direction: column;
+        /*margin-top: 50vh;*/
+        top: 20vh;
+      }
+      .postwrapper * {
+        background-color: #fff;
+        pointer-events: all;
+
+      }
+      .button {
+          background: url("https://static.wikia.nocookie.net/hades_gamepedia_en/images/c/c0/Button_selected.png");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 90% 50%;
+      }
+      
+      
+      
+     .footer{
+         width: 100%;
+         height: 10%;
+         position: relative;
+     }
+      @keyframes fadein {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      
+      
+      
+      
+      /*POSTS AND SHIZ*/
+      
+      
+      #posts {
+width: 40%;
+font-family: var(--description);
+font-size: 0.9rem;
+padding: 10px;
+top: 0%;
+}
+#posts a{
+    text-decoration: none;
+    color: var(--acc);
+}
+
+
+.entries {
+margin-bottom: 50px;
+width: 100%;
+
+}
+
+.entries img {
+height: auto;
+max-width: 100%;
+overflow: hidden;
+
+}
+.entries p{
+    width: auto;
+    height: auto;
+}
+
+.read_more {
+background: white;
+border: 2px solid var(--acc);
+border-radius: 5px;
+color: white;
+display: inline-block;
+font-size: 0.9rem;
+padding: 10px;
+text-align: center;
+text-transform: uppercase;
+width: calc(100% - 22px);
+}
+
+.read_more:hover {
+background: white;
+color: var(--acc);
+}
+
+.text p {
+margin-top: 0px;
+}
+ 
+.caption {
+margin-top: 20px;
+}
+
+.caption p {
+margin-top: 0px;
+}
+
+.ask-wrapper {
+width: 100%;
+border: 1px solid var(--acc);
+}
+ 
+.asker {
+background: white;
+
+
+}
+ 
+.asker-url {
+font-size: 0.9rem;
+text-align: left;
+text-transform: uppercase;
+}
+ 
+.asker-url a {
+background: none;
+padding: 0px;
+}
+ 
+.question {
+background: white;
+margin: 20px;
+}
+
+.quote {
+background: white;
+font-size: 0.9rem;
+padding: 20px;
+text-align: left;
+text-transform: uppercase;
+}
+
+.website {
+border: 1px solid var(--acc);
+border-radius: 5px;
+font-size: 0.9rem;
+padding: 20px;
+text-align: left;
+text-transform: uppercase;
+}
+
+.chat {
+font-size: 0.9rem;
+text-align: left;
+text-transform: uppercase;
+}
+
+.chat li {
+list-style-type: none;
+}
+
+.chat li:nth-child(odd) {
+background-color: var(--acc);
+color: white;
+padding: 10px;
+}
+
+.chat li:nth-child(even) {
+background-color: white;
+color: var(-acc);
+padding: 10px;
+}
+
+.audio iframe {
+height: 85px;
+width: 500px;
+}
+
+.entries-information {
+border-top: 2px solid var(--acc);
+width: 100%;
+margin-top: 20px;
+padding-top: 20px;
+text-align: left;
+text-transform: uppercase;
+padding-bottom: 20px;
+border-bottom: 2px solid var(--acc);
+overflow-y: auto;
+}
+.entries-information img{
+    width: 25px;
+    height: 25px;
+}
+
+.like {
+    display: inline;
+    position: relative;
+    z-index: 10;
+}
+
+.notes{
+    font-size: 0.5rem;
+}
+.notes li {
+list-style-type: none;
+}
+
+.notes img {
+display: none;
+}
+
+.pagination {
+text-transform: uppercase;
+}
+
+.iframe-controls-container {
+    transform: scale(0.75,0.75);
+    margin-bottom: 20px;
+}
+
+      
+      
+      {CustomCSS}
+      
+    </style>
+  </head>
+  <body>
+
+    <div class="bg">
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691485284007966/Tartarus_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691470473920512/Asphodel_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691502249705482/Elysium_Overlook.png"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691485284007966/Tartarus_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691470473920512/Asphodel_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691502249705482/Elysium_Overlook.png"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691485284007966/Tartarus_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691470473920512/Asphodel_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691502249705482/Elysium_Overlook.png"
+      />
+    </div>
+    <div class="nav">
+      <div class="dropdown">
+        <label for="gods">choose a god!</label>
+        <select name="gods" class="gods" onclick="change()">
+          <option value="aphrodite">aphrodite</option>
+          <option value="ares">ares</option>
+          <option value="artemis">artemis</option>
+          <option value="athena">athena</option>
+          <option value="demeter">demeter</option>
+          <option value="dionysus">dionysus</option>
+          <option value="poseidon">poseidon</option>
+          <option value="zeus">zeus</option>
+        </select>
+        <img
+          src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/85/Aphrodite-bond-icon.png"
+          class="bond"
+        />
+      </div>
+
+      <ul>
+        <li id="home"><a href="{BlogURL}">Home</a></li>
+        <li id="asks"><a href="{BlogURL}ask">Asks</a></li>
+        <li id="submissions"><a href="{BlogURL}submit">Submissions</a></li>
+        <li>
+{block:PreviousPage}
+<a href="{PreviousPage}">Previous</a> 
+{/block:PreviousPage}</li>
+<li>
+{block:NextPage}
+<a href="{NextPage}">Next</a>
+{/block:NextPage}
+
+</li>
+        <li>{block:Pagination}
+<div class="pagination">
+{CurrentPage}/{TotalPages}{/block:Pagination}</li>
+
+      </ul>
+    </div>
+    <div class="boons-wrapper">
+      <ul class="boons">
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e3/Heartbreak_Strike.png"
+            alt=""
+            class="attack"
+            ;
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e9/Heartbreak_Flourish.png"
+            alt=""
+            class="special"
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/aa/Crush_Shot.png"
+            alt=""
+            class="cast"
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e0/Passion_Dash.png"
+            alt=""
+            class="dash"
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f0/Aphrodite%27s_Aid.png"
+            alt=""
+            class="call"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="stats">
+      <li class="healthbar">
+        <span class="health">
+          <span class="innerhealth"> </span>
+        </span>
+        <p class="healthno numbers">100/100</p>
+      </li>
+      <li class="castbar"></li>
+    </div>
+
+    <div class="infowrapper home">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Home</strong></div>
+          <div class="flavortext">Welcome to my blog!</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            {text:home}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper about">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>About</strong></div>
+          <div class="flavortext">about me!</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            {text:about}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper link1">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Link 1</strong></div>
+          <div class="flavortext">link 1</div>
+        </div>
+        <div class="description-wrapper button">
+          <div class="description">
+            <a
+              href="{text:link for link1}"
+              >{text:link1}</a
+            >
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper link2">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Link 2</strong></div>
+          <div class="flavortext">link 2</div>
+        </div>
+        <div class="description-wrapper button">
+          <div class="description">
+            <a
+              href="{text:link for link2}"
+              >{text:link2}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper link3">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Link 3</strong></div>
+          <div class="flavortext">link 3</div>
+        </div>
+        <div class="description-wrapper button">
+          <div class="description">
+            <a
+              href="{text:link for link3}"
+              >{text:link3}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="postwrapper">
+    
+    <div id="posts">
+
+{block:Posts}
+
+<div class="entries" id="{PostID}">
+
+{block:Text}
+{block:Title}
+<h1>{Title}</h1>
+{/block:Title}
+<div class="text">
+{Body}
+</div>
+{/block:Text}
+
+{block:Answer}
+<div class="ask-wrapper">
+<div class="asker">
+<div class="asker-url"><a href="{AskerURL}">{Asker} : </a>
+</div>
+</div>
+<div class="question">
+{Question}
+</div>
+</div>
+<div class="caption">
+{Answer}
+</div>
+{/block:Answer}
+
+{block:Quote}
+<div class="quote">
+"{Quote}</i>" {block:Source}— {Source}{/block:Source}
+</div>
+{/block:Quote}
+
+{block:Link}
+<div class="website"><a href="{URL}" target="_blank">{Name}</a></div>
+{block:Description}
+<div class="caption">
+{Description}
+</div>
+{/block:Description}
+{/block:Link}
+
+{block:Chat}
+<div class="chat">
+{block:Title}
+<h1>{Title}</h1>
+{/block:Title}
+{block:Lines}
+<li>{block:Label}{Label}{/block:Label}
+{Line}
+</li>
+{/block:Lines}
+</div>
+{/block:Chat}
+
+{block:Audio}
+<div class="audio">
+{AudioEmbed}
+</div>
+{block:Caption}
+<div class="caption">{Caption}</div>
+{/block:Caption}
+{/block:Audio}
+
+{block:Photo}
+<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+<div class="caption">{Caption}</div>
+{/block:Caption}
+{/block:Photo}
+
+{block:Photoset}
+{Photoset}
+{block:Caption}
+<div class="caption">{Caption}</div>
+{/block:Caption}
+{/block:Photoset}
+
+{block:Video}
+<div class="video">
+{Video-500}
+</div>
+{block:Caption}
+<div class="caption">{Caption}</div>
+{/block:Caption}
+{/block:Video}
+
+{block:Date}
+<div class="entries-information">
+{block:Date}({block:NoteCount}<a href="{Permalink}">{NoteCountWithLabel}</a>{/block:NoteCount}  {block:NoteCount}/{/block:NoteCount} <a href="{Permalink}">{DayOfMonth} {ShortMonth} {Year}</a>){/block:Date}
+{block:RebloggedFrom} <a href="{ReblogParentURL}">Via</a> / {/block:RebloggedFrom}  
+{block:ContentSource} <a href="{SourceURL}">Source</a> / {/block:ContentSource}
+<a href="{ReblogURL}" target="_blank"><img src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/c/c0/Darkness.png"></a> /
+
+
+
+<div class="tags">
+
+{block:Tags}
+<a href="{TagURL}" style="margin-right: 5px;">#{Tag}</a>
+{/block:Tags}
+</div>
+{block:PostNotes}
+{PostNotes}
+{/block:PostNotes}
+</div>
+{/block:Date}
+
+</div>
+
+{/block:Posts}
+
+
+
+</div>
+
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </div>
+    
+        <script>
+      //changing via dropdown menu
+      var select = document.querySelector(".gods");
+      var boon = document.querySelector(".bond");
+      var attack = document.querySelector(".attack");
+      var special = document.querySelector(".special");
+      var cast = document.querySelector(".cast");
+      var dash = document.querySelector(".dash");
+      var call = document.querySelector(".call");
+      var r = document.querySelector(':root');
+      //case statement for changing boon image
+      function change() {
+        switch (select.value) {
+          case "aphrodite":
+            console.log("aphrodite");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/85/Aphrodite-bond-icon.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e3/Heartbreak_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e9/Heartbreak_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/aa/Crush_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e0/Passion_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f0/Aphrodite%27s_Aid.png";
+              r.style.setProperty('--acc', 'pink');
+            break;
+          case "ares":
+            console.log("ares");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/7/7e/Ares-bond-icon.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/83/Curse_of_Agony.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/a4/Curse_of_Pain.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/7/75/Slicing_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/5/58/Blade_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/63/Ares%27_Aid.png";
+              r.style.setProperty('--acc', 'red');
+            break;
+          case "artemis":
+            console.log("artemis");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/89/Artemis-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/2/2a/Deadly_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f6/Deadly_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/3/35/True_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/9/92/Hunter_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/2/2b/Artemis%27_Aid.png";
+              r.style.setProperty('--acc', 'lightgreen');
+            break;
+          case "athena":
+            console.log("athena");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/1/15/Athena-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e6/Divine_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/ea/Divine_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/a4/Phalanx_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/66/Divine_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/9/91/Athena%27s_Aid.png";
+              r.style.setProperty('--acc', 'gold');
+            break;
+          case "demeter":
+            console.log("demeter");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/0/04/Demeter-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/65/Frost_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/6d/Frost_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/4/46/Crystal_Beam.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/d/d2/Mistral_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/3/35/Demeter%27s_Aid.png";
+              r.style.setProperty('--acc', 'gray');
+            break;
+          case "dionysus":
+            console.log("dionysus");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/81/Dionysus-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/80/Drunken_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/4/46/Drunken_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/a4/Trippy_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e2/Drunken_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/7/75/Dionysus%27_Aid.png";
+              r.style.setProperty('--acc', 'purple');
+            break;
+          case "poseidon":
+            console.log("poseidon");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/6d/Poseidon-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/b/b2/Tempest_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/c/c7/Tempest_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/1/17/Flood_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/c/c8/Tidal_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/ea/Poseidon%27s_Aid.png";
+              r.style.setProperty('--acc', 'aqua');
+            break;
+          case "zeus":
+            console.log("zeus");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f4/Zeus-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f6/Lightning_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/ad/Thunder_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/0/01/Electric_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/b/b4/Thunder_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/ec/Zeus%27_Aid.png";
+              r.style.setProperty('--acc', 'yellow');
+            break;
+
+          default:
+            console.log("aphrodite");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/85/Aphrodite-bond-icon.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e3/Heartbreak_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e9/Heartbreak_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/aa/Crush_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e0/Passion_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f0/Aphrodite%27s_Aid.png";
+            break;
+        }
+      }
+      change();
+
+      ////////////////////
+      var home = document.querySelector(".home");
+      var about = document.querySelector(".about");
+      var link1 = document.querySelector(".link1");
+      var link2 = document.querySelector(".link2");
+      var link3 = document.querySelector(".link3");
+      var posts = document.querySelector(".postwrapper");
+      //dialogue options
+      function infoshow(info) {
+        info.style.opacity = "1";
+        posts.style.opacity = "0.3";
+        posts.style.zIndex = "-1";
+      }
+      function infohide(info) {
+        info.style.opacity = "0";
+        posts.style.opacity = "1";
+        posts.style.zIndex = "2";
+      }
+      attack.onmouseover = function () {
+        infoshow(home);
+      };
+      attack.onmouseout = function () {
+        infohide(home);
+      };
+      special.onmouseover = function (){
+          infoshow(about);
+      }
+      special.onmouseout = function () {
+        infohide(about);
+      };
+      cast.onmouseover = function () {
+        infoshow(link1);
+      };
+      cast.onmouseout = function(){setTimeout(function(){infohide(link1)},1000);
+};
+      dash.onmouseover = function () {
+        infoshow(link2);
+      };
+      dash.onmouseout = function(){setTimeout(function(){infohide(link2)},1000);
+};
+      call.onmouseover = function () {
+        infoshow(link3);
+      };
+      call.onmouseout = function(){setTimeout(function(){infohide(link3)},1000);
+};
+      
+      //special.onmouseout = setTimeout(infohide(about), 150);
+
+      //health bar
+      /* var healthbar = document.querySelector(".innerhealth");
+      var healthnumber = document.querySelector(".healthno");
+      healthnumber.innerHTML = healthbar + "/ 100"; */
+    </script>
+    
+  </body>
+</html>

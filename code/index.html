@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>zagreus</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans+JP:wght@900&family=Syne&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg">
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691485284007966/Tartarus_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691470473920512/Asphodel_01.jpg"
+      />
+      <img
+        src="https://cdn.discordapp.com/attachments/791691369017376819/791691502249705482/Elysium_Overlook.png"
+      />
+    </div>
+    <div class="nav">
+      <div class="dropdown">
+        <label for="gods">choose a god!</label>
+        <select name="gods" class="gods" onclick="change()">
+          <option value="aphrodite">aphrodite</option>
+          <option value="ares">ares</option>
+          <option value="artemis">artemis</option>
+          <option value="athena">athena</option>
+          <option value="demeter">demeter</option>
+          <option value="dionysus">dionysus</option>
+          <option value="poseidon">poseidon</option>
+          <option value="zeus">zeus</option>
+        </select>
+        <img
+          src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/85/Aphrodite-bond-icon.png"
+          class="bond"
+        />
+      </div>
+
+      <ul>
+        <li id="home"><a href="http://">Home</a></li>
+        <li id="asks"><a href="http://">Asks</a></li>
+        <li id="submissions"><a href="http://">Submissions</a></li>
+      </ul>
+    </div>
+    <div class="boons-wrapper">
+      <ul class="boons">
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e3/Heartbreak_Strike.png"
+            alt=""
+            class="attack"
+            ;
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e9/Heartbreak_Flourish.png"
+            alt=""
+            class="special"
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/aa/Crush_Shot.png"
+            alt=""
+            class="cast"
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e0/Passion_Dash.png"
+            alt=""
+            class="dash"
+          />
+        </li>
+        <li class="spin">
+          <img
+            src="https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f0/Aphrodite%27s_Aid.png"
+            alt=""
+            class="call"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="stats">
+      <li class="healthbar">
+        <span class="health">
+          <span class="innerhealth"> </span>
+        </span>
+        <p class="healthno numbers">100/100</p>
+      </li>
+      <li class="castbar"></li>
+    </div>
+
+    <div class="infowrapper home">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Home</strong></div>
+          <div class="flavortext">Welcome to my blog!</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+            placeat dolor incidunt dolore error, velit maxime tempora laboriosam
+            tenetur facilis cupiditate perspiciatis facere dolorum aperiam
+            voluptate beatae suscipit! Architecto, aliquam.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper about">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>About</strong></div>
+          <div class="flavortext">Welcome to my blog!</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+            placeat dolor incidunt dolore error, velit maxime tempora laboriosam
+            tenetur facilis cupiditate perspiciatis facere dolorum aperiam
+            voluptate beatae suscipit! Architecto, aliquam.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper link1">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Link 1</strong></div>
+          <div class="flavortext">link 1</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+            recusandae ea exercitationem totam, sed explicabo voluptate nemo
+            aspernatur odio officiis ducimus similique nulla corrupti suscipit
+            asperiores itaque aperiam iusto eius omnis magnam deleniti.<a
+              href="https://www.google.com"
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Architecto, maxime! Soluta, dignissimos.</a
+            >
+            Harum nobis minus aspernatur sunt ea voluptatibus excepturi eligendi
+            id deserunt nam culpa, amet illum esse sint!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper link2">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Link 2</strong></div>
+          <div class="flavortext">link 2</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+            placeat dolor incidunt dolore error, velit maxime tempora laboriosam
+            tenetur facilis cupiditate perspiciatis facere dolorum aperiam
+            voluptate beatae suscipit! Architecto, aliquam.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infowrapper link3">
+      <div class="wrapper">
+        <div class="toptext">
+          <div class="heading title"><strong>Link 3</strong></div>
+          <div class="flavortext">link 3</div>
+        </div>
+        <div class="description-wrapper">
+          <div class="description">
+            Repellat doloribus perferendis quae eius ab libero dolor laboriosam
+            molestiae commodi nulla aut ad sunt officia, quisquam animi illum.
+            Praesentium dicta, eaque dolores est tenetur molestiae dolore minus
+            dignissimos quasi, veritatis id harum distinctio a eligendi aliquid
+            sed veniam optio in ipsam fugit temporibus quidem qui impedit? Quam
+            magnam est, dolorem eum quidem soluta. Pariatur eum beatae quo hic
+            ex consequatur delectus magnam qui. Magni.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="postwrapper">
+      <p>HELLO POST TIME BABY</p>
+      <a href="https://www.google.com"
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
+        maxime! Soluta, dignissimos.</a
+      >
+    </div>
+    <script>
+      //changing via dropdown menu
+      var select = document.querySelector(".gods");
+      var boon = document.querySelector(".bond");
+      var attack = document.querySelector(".attack");
+      var special = document.querySelector(".special");
+      var cast = document.querySelector(".cast");
+      var dash = document.querySelector(".dash");
+      var call = document.querySelector(".call");
+      //case statement for changing boon image
+      function change() {
+        switch (select.value) {
+          case "aphrodite":
+            console.log("aphrodite");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/85/Aphrodite-bond-icon.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e3/Heartbreak_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e9/Heartbreak_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/aa/Crush_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e0/Passion_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f0/Aphrodite%27s_Aid.png";
+            break;
+          case "ares":
+            console.log("ares");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/7/7e/Ares-bond-icon.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/83/Curse_of_Agony.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/a4/Curse_of_Pain.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/7/75/Slicing_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/5/58/Blade_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/63/Ares%27_Aid.png";
+            break;
+          case "artemis":
+            console.log("artemis");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/89/Artemis-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/2/2a/Deadly_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f6/Deadly_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/3/35/True_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/9/92/Hunter_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/2/2b/Artemis%27_Aid.png";
+            break;
+          case "athena":
+            console.log("athena");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/1/15/Athena-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e6/Divine_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/ea/Divine_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/a4/Phalanx_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/66/Divine_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/9/91/Athena%27s_Aid.png";
+            break;
+          case "demeter":
+            console.log("demeter");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/0/04/Demeter-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/65/Frost_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/6d/Frost_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/4/46/Crystal_Beam.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/d/d2/Mistral_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/3/35/Demeter%27s_Aid.png";
+            break;
+          case "dionysus":
+            console.log("dionysus");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/81/Dionysus-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/80/Drunken_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/4/46/Drunken_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/a4/Trippy_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e2/Drunken_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/7/75/Dionysus%27_Aid.png";
+            break;
+          case "poseidon":
+            console.log("poseidon");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/6/6d/Poseidon-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/b/b2/Tempest_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/c/c7/Tempest_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/1/17/Flood_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/c/c8/Tidal_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/ea/Poseidon%27s_Aid.png";
+            break;
+          case "zeus":
+            console.log("zeus");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f4/Zeus-bond-forged.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f6/Lightning_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/ad/Thunder_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/0/01/Electric_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/b/b4/Thunder_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/ec/Zeus%27_Aid.png";
+            break;
+
+          default:
+            console.log("aphrodite");
+            boon.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/8/85/Aphrodite-bond-icon.png";
+            attack.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e3/Heartbreak_Strike.png";
+            special.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e9/Heartbreak_Flourish.png";
+            cast.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/a/aa/Crush_Shot.png";
+            dash.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/e/e0/Passion_Dash.png";
+            call.src =
+              "https://static.wikia.nocookie.net/hades_gamepedia_en/images/f/f0/Aphrodite%27s_Aid.png";
+            break;
+        }
+      }
+      change();
+
+      ////////////////////
+      var home = document.querySelector(".home");
+      var about = document.querySelector(".about");
+      var link1 = document.querySelector(".link1");
+      var link2 = document.querySelector(".link2");
+      var link3 = document.querySelector(".link3");
+      var posts = document.querySelector(".postwrapper");
+      //dialogue options
+      function infoshow(info) {
+        info.style.opacity = "1";
+        posts.style.opacity = "0.3";
+        posts.style.zIndex = "-1";
+      }
+      function infohide(info) {
+        info.style.opacity = "0";
+        posts.style.opacity = "1";
+        posts.style.zIndex = "2";
+      }
+      attack.onmouseover = function () {
+        infoshow(home);
+      };
+      attack.onmouseout = function () {
+        infohide(home);
+      };
+      special.onmouseover = function () {
+        infoshow(about);
+      };
+      special.onmouseout = function () {
+        infohide(about);
+      };
+      cast.onmouseover = function () {
+        infoshow(link1);
+      };
+      cast.onmouseout = function () {
+        infohide(link1);
+      };
+      dash.onmouseover = function () {
+        infoshow(link2);
+      };
+      dash.onmouseout = function () {
+        infohide(link2);
+      };
+      call.onmouseover = function () {
+        infoshow(link3);
+      };
+      call.onmouseout = function () {
+        infohide(link3);
+      };
+
+      //health bar
+      /* var healthbar = document.querySelector(".innerhealth");
+      var healthnumber = document.querySelector(".healthno");
+      healthnumber.innerHTML = healthbar + "/ 100"; */
+    </script>
+  </body>
+</html>
