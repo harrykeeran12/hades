@@ -19,6 +19,9 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
+.hidden {
+  visibility: hidden;
+}
 .bg {
   width: 100vw;
   height: 300vh;
